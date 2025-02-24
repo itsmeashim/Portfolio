@@ -60,6 +60,7 @@ export default function Certifications() {
               <a
                 href={cert.link}
                 className='flex underline text-sm items-center'
+                target='_blank'
               >
                 View Certificate <ArrowRight className='ml-1' />
               </a>

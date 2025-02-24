@@ -8,7 +8,7 @@ export default function Achievements() {
       name: "Best Use of Web3 for LeftOverLift",
       image:
         "https://pub-fd007d5f398b466586835c6748dd01d2.r2.dev/leftoverlift-achiev.jpg",
-      link: "https://devpost.com/software/leftoverlift",
+      link: "https://devfolio.co/projects/leftoverlift-7a40",
     },
     {
       name: "Stored XSS on tags in Concrete CMS (CVE-2023-28476)",
@@ -38,6 +38,7 @@ export default function Achievements() {
               <a
                 href={achievement.link}
                 className='flex underline text-sm items-center'
+                target='_blank'
               >
                 View Achievement <ArrowRight className='ml-1' />
               </a>
