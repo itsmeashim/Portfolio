@@ -1,37 +1,44 @@
-// api/discordWebhook.js
+import type { VercelRequest, VercelResponse } from '@vercel/node';
 
-export default async function handler(req, res) {
-  if (req.method === "POST") {
-    const { message } = req.body
+const DISCORD_WEBHOOK = process.env.DISCORD_WEBHOOK_URL;
 
-    if (!message) {
-      return res.status(400).json({ error: "Message is required" })
+export default async function handler(req: VercelRequest, res: VercelResponse) {
+  if (req.method !== 'POST') {
+    return res.status(405).json({ message: 'Method not allowed' });
+  }
+
+  const { name, email, message } = req.body;
+
+  if (!name || !email || !message) {
+    return res.status(400).json({ message: 'Missing required fields' });
+  }
+
+  try {
+    const response = await fetch(DISCORD_WEBHOOK!, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        embeds: [{
+          title: 'New Contact Form Submission',
+          fields: [
+            { name: 'Name', value: name },
+            { name: 'Email', value: email },
+            { name: 'Message', value: message }
+          ],
+          timestamp: new Date().toISOString(),
+        }],
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to send message to Discord');
     }
 
-    const webhookUrl = process.env.DISCORD_WEBHOOK_URL as string // Store your webhook URL as an environment variable
-
-    const payload = {
-      content: message,
-    }
-
-    try {
-      const response = await fetch(webhookUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      })
-
-      if (!response.ok) {
-        throw new Error("Failed to send message to Discord")
-      }
-
-      return res.status(200).json({ success: "Message sent successfully" })
-    } catch (error) {
-      return res.status(500).json({ error: error.message })
-    }
-  } else {
-    return res.status(405).json({ error: "Method Not Allowed" })
+    return res.status(200).json({ message: 'Message sent successfully' });
+  } catch (error) {
+    console.error('Error sending message to Discord:', error);
+    return res.status(500).json({ message: 'Failed to send message' });
   }
 }
