@@ -23,12 +23,14 @@ export default function Header() {
         <a
           href='https://linkedin.com/in/itsashim'
           className='flex items-center hover:text-accent-9 transition-colors'
+          target='_blank'
         >
           <LinkedinLogo className='mr-1' /> LinkedIn
         </a>
         <a
           href='https://github.com/itsmeashim'
           className='flex items-center hover:text-accent-9 transition-colors'
+          target='_blank'
         >
           <GithubLogo className='mr-1' /> GitHub
         </a>
