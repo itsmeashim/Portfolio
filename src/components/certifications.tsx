@@ -10,7 +10,7 @@ export default function Certifications() {
       id: "79637734",
       image:
         "https://pub-fd007d5f398b466586835c6748dd01d2.r2.dev/ejpt-cert.jpg",
-      link: "https://ine.com/certifications/79637734",
+      link: "https://certs.ine.com/3d71626f-7480-479f-97a6-d0c6a75dd981#acc.k9hDvHsm",
     },
     {
       name: "Programming with Google Go Specialization",
@@ -26,7 +26,7 @@ export default function Certifications() {
       id: "CN8XN3ES53TH",
       image:
         "https://pub-fd007d5f398b466586835c6748dd01d2.r2.dev/owasp-cert.jpg",
-      link: "https://verify.infosecinstitute.com/CN8XN3ES53TH",
+      link: "https://www.coursera.org/account/accomplishments/specialization/CN8XN3ES53TH",
     },
     {
       name: "Javascript Security",
@@ -34,7 +34,7 @@ export default function Certifications() {
       id: "CQH45QRXV9VY",
       image:
         "https://pub-fd007d5f398b466586835c6748dd01d2.r2.dev/javascript-cert.jpg",
-      link: "https://verify.infosecinstitute.com/CQH45QRXV9VY",
+      link: "https://www.coursera.org/account/accomplishments/specialization/CQH45QRXV9VY",
     },
   ]
 
